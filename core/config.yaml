@@ -1,0 +1,48 @@
+# 数据集配置
+dataset:
+  name: 'voc2012'  # 可选: 'voc2012', 'sbd'
+  voc_root: 'data/voc/VOCdevkit'
+  sbd_root: 'data/sbd/benchmark_RELEASE'
+  
+  # VOC数据集路径
+  voc:
+    train_data_dir: 'data/voc/VOCdevkit/VOC2012/JPEGImages'
+    train_ann_dir: 'data/voc/VOCdevkit/VOC2012/Annotations'
+    val_data_dir: 'data/voc/VOCdevkit/VOC2012/JPEGImages'
+    val_ann_dir: 'data/voc/VOCdevkit/VOC2012/Annotations'
+    
+  # SBD数据集路径
+  sbd:
+    train_data_dir: 'data/sbd/benchmark_RELEASE/dataset/img'
+    train_ann_dir: 'data/sbd/benchmark_RELEASE/dataset/cls'
+    val_data_dir: 'data/sbd/benchmark_RELEASE/dataset/img'
+    val_ann_dir: 'data/sbd/benchmark_RELEASE/dataset/cls'
+
+# 模型配置
+model:
+  name: 'resnet38'
+  pretrained: 'models/weights/ilsvrc-cls_rna-a1_cls1000_ep-0001.pth'
+  num_classes: 21  # VOC2012的类别数（包括背景）
+
+# 训练配置
+train:
+  batch_size: 8
+  num_workers: 4
+  epochs: 50
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  momentum: 0.9
+  save_interval: 5
+  log_interval: 100
+
+# 评估配置
+eval:
+  batch_size: 1
+  num_workers: 4
+  output_dir: 'results/v21'
+
+# 路径配置
+paths:
+  checkpoint_dir: 'checkpoints'
+  log_dir: 'logs'
+  result_dir: 'results/v21' 
